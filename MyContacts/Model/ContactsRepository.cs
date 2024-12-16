@@ -16,7 +16,13 @@ namespace MyContacts.Model
             contactDatabase = new ContactDatabase();
         }
 
-        public  async Task<ObservableCollection<ContactInfo>> GetContacts() {
+        public async Task UpdateContact(ContactInfo contact)
+        {
+            await contactDatabase.UpdateContact(contact); // Delegate the update to the database layer
+        }
+
+
+        public async Task<ObservableCollection<ContactInfo>> GetContacts() {
             var contacts = await contactDatabase.GetAllContactsAsync();
            
             return new ObservableCollection<ContactInfo>(contacts); ;

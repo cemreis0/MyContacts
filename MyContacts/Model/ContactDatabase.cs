@@ -54,6 +54,11 @@ namespace MyContacts.Model
 
 
         }
+        public async Task UpdateContact(ContactInfo contact)
+        {
+            await Init(); // Ensure database is initialized
+            await Database.UpdateAsync(contact); // Update the contact
+        }
 
         public async Task DeleteContact(ContactInfo contact) { 
             
